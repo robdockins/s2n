@@ -20,6 +20,8 @@
 #include <cbmc_proof/cbmc_utils.h>
 #include <cbmc_proof/make_common_datastructures.h>
 
+_Bool __CPROVER_r_ok( void*, size_t );
+
 void s2n_stuffer_raw_read_harness() {
     struct s2n_stuffer *stuffer = cbmc_allocate_s2n_stuffer();
     __CPROVER_assume(s2n_stuffer_is_valid(stuffer));

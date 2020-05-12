@@ -20,7 +20,8 @@
 #include <cbmc_proof/make_common_datastructures.h>
 #include <cbmc_proof/cbmc_utils.h>
 
-void s2n_calculate_stacktrace() {}
+_Bool __CPROVER_r_ok( void*, size_t );
+
 int munlock(const void *addr, size_t len) {
     int rval;
 

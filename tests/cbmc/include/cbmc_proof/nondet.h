@@ -19,6 +19,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+void __CPROVER_assume( int );
+
 /**
  * These functions provide a way to get unconstrained values of the correct types for use in CBMC proofs
  * CBMC treats any function which does not have a body as returning an unconstrained value.

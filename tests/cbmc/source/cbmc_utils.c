@@ -16,6 +16,9 @@
 #include <assert.h>
 #include <cbmc_proof/cbmc_utils.h>
 
+bool __CPROVER_uninterpreted_equals(const void *const a, const void *const b);
+uint64_t __CPROVER_uninterpreted_hasher(const void *const a);
+
 void assert_bytes_match(const uint8_t *const a, const uint8_t *const b, const size_t len) {
     assert(!a == !b);
     if (len > 0 && a != NULL && b != NULL) {
@@ -89,8 +92,6 @@ bool nondet_equals(const void *const a, const void *const b) {
     return nondet_bool();
 }
 
-bool __CPROVER_uninterpreted_equals(const void *const a, const void *const b);
-uint64_t __CPROVER_uninterpreted_hasher(const void *const a);
 /**
  * Add assumptions that equality is reflexive and symmetric. Don't bother with
  * transitivity because it doesn't cause any spurious proof failures on hash-table

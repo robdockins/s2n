@@ -24,3 +24,5 @@
 void abort() {
     assert(0);
 }
+
+int s2n_calculate_stacktrace() { return 0; }

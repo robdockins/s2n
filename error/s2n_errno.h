@@ -275,6 +275,8 @@ extern __thread const char *s2n_debug_str;
  * Violations of the function contracts are undefined behaviour.
  */
 #ifdef CBMC
+_Bool __CPROVER_r_ok( const void*, size_t );
+_Bool __CPROVER_w_ok( const void*, size_t );
 #    define S2N_MEM_IS_READABLE(base, len) (((len) == 0) || __CPROVER_r_ok((base), (len)))
 #    define S2N_MEM_IS_WRITABLE(base, len) (((len) == 0) || __CPROVER_w_ok((base), (len)))
 #else

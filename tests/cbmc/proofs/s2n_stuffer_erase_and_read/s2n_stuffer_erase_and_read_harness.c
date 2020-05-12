@@ -22,7 +22,6 @@
 #include <cbmc_proof/make_common_datastructures.h>
 #include <cbmc_proof/proof_allocators.h>
 
-void s2n_calculate_stacktrace() {}
 
 void s2n_stuffer_erase_and_read_harness() {
     struct s2n_stuffer *stuffer = cbmc_allocate_s2n_stuffer();

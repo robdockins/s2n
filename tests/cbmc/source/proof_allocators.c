@@ -17,16 +17,27 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
+void crucible_havoc_memory( unsigned char* p, size_t len );
+//void crucible_havoc_memory( unsigned char* p, size_t len ) { }
+
 void *bounded_calloc(size_t num, size_t size) {
     size_t required_bytes;
     __CPROVER_assume(!__builtin_mul_overflow(num, size, &required_bytes));
     __CPROVER_assume(required_bytes <= MAX_MALLOC);
-    return calloc(num, size);
+    void* p = calloc(num, size);
+    if(p) {
+      crucible_havoc_memory( p, num*size );
+    }
+    return p;
 }
 
 void *bounded_malloc(size_t size) {
     __CPROVER_assume(size <= MAX_MALLOC);
-    return malloc(size);
+    void* p = malloc(size);
+    if(p) {
+      crucible_havoc_memory( p, size );
+    }
+    return p;
 }
 
 
