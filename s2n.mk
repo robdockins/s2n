@@ -139,7 +139,7 @@ ifndef COV_TOOL
 	endif
 endif
 
-CFLAGS_LLVM = ${DEFAULT_CFLAGS} -emit-llvm -c -g -O1
+CFLAGS_LLVM = ${DEFAULT_CFLAGS} -emit-llvm -c -g -O1 -DCBMC
 
 $(BITCODE_DIR)%.bc: %.c
 	$(CLANG) $(CFLAGS_LLVM) -o $@ $< 
